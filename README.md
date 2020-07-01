@@ -19,3 +19,22 @@
 - loss的替换:由SmoothL1替换为IOU/Diou/Giou/Ciou-loss系列.分类loss有采取过focalLoss,但表现差强人意
   - 在SSD中，网络的输出是偏置，原来仓库的实现计算的偏置的SmoothL1
   - 算iouloss需要四个点的坐标.因此需要将网络的输出(偏置)利用先验框解码为x1,y1,x2,y2
+### ssd/modeling/backbone/resnet.py
+
+这个是新增加的以resnet作为banckbone的脚本(提取出4层featureMaps)
+
+### ssd/modeling/box_head/loss_iou.py
+
+iou/giou/diou/ciou的实现
+
+### make_imagesets.py
+
+分割voc的训练集/验证集/测试集合
+
+### customize_service.py
+
+华为云modelart需要的推理脚本
+
+###  get_ratio.py
+
+计算类别比例
