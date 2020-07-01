@@ -1,0 +1,24 @@
+MODEL:
+  BACKBONE:
+    NAME: 'res_backbone'
+    OUT_CHANNELS: (256, 512, 1024, 2048) # should match feature1 - feature4's out_channels in MyBackbone
+  PRIORS:
+    FEATURE_MAPS: [128, 64, 32, 16] # feature1 - feature4's size
+    STRIDES: [4, 8, 16, 30] # feature1 - feature4's output stride
+    MIN_SIZES: [50, 102, 226, 349] # your custom anchor settings
+    MAX_SIZES: [102, 226, 349, 512]
+    ASPECT_RATIOS: [[2, 3], [3, 4], [3, 2], [1, 1]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 512
+DATASETS:
+  TRAIN: ("voc_2007_trainval", )
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 4
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/resnet50_ssd512'
